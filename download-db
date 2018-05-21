@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+
+source /wordpress/docker-compose/sftp-config
+source /wordpress/docker-compose/check-credentials
+
+if [ -f /wordpress/wordpress.sql ]; then
+  echo 'wordpress.sql already exists. Delete this file before running this download script.'
+  exit 1
+fi
+
+if [ "$CONTINUE" = true ]; then
+  echo 'downloading db'
+  export LFTP_PASSWORD=$PASSWORD
+  lftp -e 'get /wp-content/mysql.sql -o /wordpress/wordpress.sql; bye' --env-password  sftp://$USERNAME@$HOSTNAME:$PORT
+else
+  Missing SFTP credentials. Not doing anything.
+fi

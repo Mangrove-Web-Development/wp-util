@@ -1,0 +1,5 @@
+set sftp:auto-confirm yes
+set mirror:no-empty-dirs 1
+set mirror:parallel-directories 1
+set mirror:parallel-transfer-count 6
+set net:connection-limit 6

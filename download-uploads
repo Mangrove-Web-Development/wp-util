@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+
+source download-directory /wp-content/uploads/ /wordpress/wp-content/

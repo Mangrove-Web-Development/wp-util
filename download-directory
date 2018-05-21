@@ -1,0 +1,29 @@
+#!/usr/bin/env sh
+
+REMOTE=$1
+LOCAL=$2
+
+source /wordpress/docker-compose/sftp-config
+source /wordpress/docker-compose/check-credentials
+
+
+if [ -z "$REMOTE" ]; then
+  echo REMOTE not set
+  CONTINUE=false
+fi
+if [ -z "$LOCAL" ]; then
+  echo LOCAL not set
+  CONTINUE=false
+fi
+
+
+if [ "$CONTINUE" = true ]; then
+
+	export LFTP_PASSWORD=$PASSWORD
+
+	echo "| downloading $REMOTE |"
+	lftp -e "mirror -e $REMOTE $LOCAL; bye" --env-password  sftp://$USERNAME@$HOSTNAME:$PORT
+	echo download complete
+else
+	Missing Parameters or SFTP credentials. Not doing anything.
+fi

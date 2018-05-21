@@ -1,0 +1,4 @@
+#!/bin/sh
+echo "restoring $2 from backups/$1"
+rm -rf "/var/www/html/$2"
+cp -r "/backups/$1/www/$2" /var/www/html/$2

@@ -9,13 +9,16 @@ if [ "$1" -a -d "/backups/$1" ]; then
 	echo "$BKSITEURL $SITEURL"
 	wp --path='/var/www/html' search-replace --allow-root $BKSITEURL $SITEURL
 	
-	echo "restoring uploads directory"
-	rm -rf /var/www/html/wp-content/uploads
-	cp -r "/backups/$1/www/wp-content/uploads" /var/www/html/wp-content/uploads
+	restore-dir $1 wp-content/plugins
+	restore-dir $1 wp-content/themes
+	restore-dir $1 wp-content/uploads
+
 	echo "copying owner settings from index.php"
 	U=`stat -c %u /var/www/html/index.php`
 	G=`stat -c %g /var/www/html/index.php`
-	chown -R "$U:$G" /var/www/html/wp-content/uploads
+	chown -R "$U:$G" \
+		/var/www/html/wp-content/uploads \
+		/var/www/html/wp-content/plugins
 else
 	echo "available backup directories:"
 	ls /backups

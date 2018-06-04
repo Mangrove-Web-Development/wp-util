@@ -3,7 +3,7 @@ USER root
 RUN apk add --no-cache \
   openssh-client \
   lftp
-COPY lftp-config /home/www-data/.lftprc
+COPY lftp-config /etc/lftp.conf
 COPY check-credentials /usr/local/bin/check-credentials
 COPY download-db /usr/local/bin/download-db
 COPY download-directory /usr/local/bin/download-directory

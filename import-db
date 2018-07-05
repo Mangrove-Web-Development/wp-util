@@ -1,10 +1,10 @@
 #!/usr/bin/env sh
 
-local=`wp option get siteurl`
+local=`wp --allow-root option get siteurl`
 echo 'importing wordpress.sql database file'
-wp db import
-remote=`wp option get siteurl`
+wp --allow-root db import
+remote=`wp --allow-root option get siteurl`
 
 echo "replacing $remote with $local in database"
-wp search-replace $remote $local
+wp --allow-root search-replace $remote $local
 echo 'import complete'

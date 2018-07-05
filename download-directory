@@ -3,8 +3,7 @@
 REMOTE=$1
 LOCAL=$2
 
-source /wordpress/docker-compose/sftp-config
-source /wordpress/docker-compose/check-credentials
+source get-credentials
 
 
 if [ -z "$REMOTE" ]; then

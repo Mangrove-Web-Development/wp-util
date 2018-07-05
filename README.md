@@ -1,6 +1,17 @@
 # WP Util
 
 ## Start Container
+
+### SFTP Credentials
+For SFTP utilities, a `sftp-config` file must be mounted at root with format:
+
+```
+HOSTNAME=
+USERNAME=
+PASSWORD='password'
+PORT=
+```
+
 ### Set Varibales
 ```shell
 CONTAINERNAME=wputil

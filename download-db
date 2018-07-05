@@ -1,7 +1,6 @@
 #!/usr/bin/env sh
 
-source /sftp-config
-source check-credentials
+source get-credentials
 if [ -f /var/www/html/wordpress.sql ]; then
   echo 'wordpress.sql already exists. Delete this file before running this download script.'
   exit 1

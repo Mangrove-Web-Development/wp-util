@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-source download-directory /wp-content/uploads/ /var/www/html/wp-content/
+source download-directory /wp-content/uploads/ /var/www/html/wp-content/uploads/

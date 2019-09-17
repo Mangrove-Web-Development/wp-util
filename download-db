@@ -2,8 +2,23 @@
 
 source get-credentials
 if [ -f /var/www/html/wordpress.sql ]; then
-  echo 'wordpress.sql already exists. Delete this file before running this download script.'
-  exit 1
+  echo 'wordpress.sql already exists.'
+  while true; do
+    read -p 'Do you want to delete the existing wordpress.sql and download a new one?[y/N]' yn
+    case $yn in
+      [Yy]* )
+        rm /var/www/html/wordpress.sql
+        break
+        ;;
+      [Nn]* )
+        echo 'OK, not doing anything.'
+        exit 1
+        ;;
+      * )
+        echo 'Please answer yes or no.'
+        ;;
+    esac
+  done
 fi
 
 if [ "$CONTINUE" = true ]; then
@@ -11,5 +26,5 @@ if [ "$CONTINUE" = true ]; then
   export LFTP_PASSWORD=$PASSWORD
   lftp -e 'get /wp-content/mysql.sql -o /var/www/html/wordpress.sql; bye' --env-password  sftp://$USERNAME@$HOSTNAME:$PORT
 else
-  Missing SFTP credentials. Not doing anything.
+  echo 'Missing SFTP credentials. Not doing anything.'
 fi

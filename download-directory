@@ -14,9 +14,14 @@ if [ -z "$LOCAL" ]; then
   echo LOCAL not set
   CONTINUE=false
 fi
+if [ -z "$PORT" ]; then
+  echo PORT not set
+  CONTINUE=false
+fi
 
 
 if [ "$CONTINUE" = true ]; then
+  source lftp-workaround
 
 	export LFTP_PASSWORD=$PASSWORD
 

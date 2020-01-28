@@ -13,6 +13,7 @@ COPY import-db /usr/local/bin/import-db
 COPY backup /usr/local/bin/backup
 COPY restore /usr/local/bin/restore
 COPY restore-dir /usr/local/bin/restore-dir
+COPY lftp-workaround /usr/local/bin/lftp-workaround
 RUN chmod a+x \
   /usr/local/bin/get-credentials  \
   /usr/local/bin/download-db        \
@@ -22,5 +23,6 @@ RUN chmod a+x \
   /usr/local/bin/import-db          \
   /usr/local/bin/backup             \
   /usr/local/bin/restore            \
-  /usr/local/bin/restore-dir
+  /usr/local/bin/restore-dir        \
+  /usr/local/bin/lftp-workaround
 ENTRYPOINT sh

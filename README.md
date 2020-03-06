@@ -27,6 +27,7 @@ Network admin
 username: test  
 password: test
 
+### Hosts File
 You will need to add entries for multisite.local and each of your subdomains to your hosts file for this to work:
 ```
 127.0.0.1 multisite.local yoursubdomain.multisite.local anothersubdomain.multisite.local

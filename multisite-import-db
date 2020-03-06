@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+localdomain=multisite.local
+
+echo What is the domain you are importing from?
+echo do not include http:// or the trailing /
+echo e.g. mangrove.com
+read remotedomain
+
+echo 'importing wordpress.sql database file'
+wp --allow-root db import
+
+echo "replacing $remotedomain with $localdomain in database"
+wp --allow-root search-replace --all-tables $remotedomain $localdomain
+echo 'import complete'

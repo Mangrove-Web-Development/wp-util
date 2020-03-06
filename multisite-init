@@ -1,26 +1,31 @@
 #!/usr/bin/env sh
 echo Initializing Multisite
-wp --allow-root core multisite-install --url='multisite.local' --subdomains --title='local dev' --admin_user='test' --admin_password='test' --admin_email='admin@mangrove.local' --skip-email
+wp --allow-root core multisite-install --url='multisite.local' --subdomains --title='Local Multisite' --admin_user='test' --admin_password='test' --admin_email='admin@mangrove.local' --skip-email
+if [ "$?" = "0" ]; then
+	echo Updating .htaccess file
+	OUT=/var/www/html/.htaccess
+	cat <<-EOF >$OUT
+	RewriteEngine On
+	RewriteBase /
+	RewriteRule ^index\.php$ - [L]
 
-echo Updating .htaccess file
-OUT=/var/www/html/.htaccess
-cat <<EOF >$OUT
-RewriteEngine On
-RewriteBase /
-RewriteRule ^index\.php$ - [L]
+	# add a trailing slash to /wp-admin
+	RewriteRule ^wp-admin$ wp-admin/ [R=301,L]
 
-# add a trailing slash to /wp-admin
-RewriteRule ^wp-admin$ wp-admin/ [R=301,L]
+	RewriteCond %{REQUEST_FILENAME} -f [OR]
+	RewriteCond %{REQUEST_FILENAME} -d
+	RewriteRule ^ - [L]
+	RewriteRule ^(wp-(content|admin|includes).*) $1 [L]
+	RewriteRule ^(.*\.php)$ $1 [L]
+	RewriteRule . index.php [L]
+	EOF
 
-RewriteCond %{REQUEST_FILENAME} -f [OR]
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteRule ^ - [L]
-RewriteRule ^(wp-(content|admin|includes).*) $1 [L]
-RewriteRule ^(.*\.php)$ $1 [L]
-RewriteRule . index.php [L]
-EOF
-
-echo Multisite initialized.
-echo Admin
-echo username: test
-echo password: test
+	echo Multisite initialized.
+	echo http://multisite.local
+	echo Admin
+	echo username: test
+	echo password: test
+else
+	printf "\nCouldn't install Multisite. Wait for the WordPress container to finish setting up and try again.\n"
+	exit 1
+fi

@@ -16,17 +16,19 @@ COPY restore-dir /usr/local/bin/restore-dir
 COPY lftp-workaround /usr/local/bin/lftp-workaround
 COPY multisite-import-db /usr/local/bin/multisite-import-db
 COPY multisite-init /usr/local/bin/multisite-init
+COPY wp-init /usr/local/bin/wp-init
 RUN chmod a+x \
-  /usr/local/bin/get-credentials  \
-  /usr/local/bin/download-db        \
-  /usr/local/bin/download-directory \
-  /usr/local/bin/download-plugins   \
-  /usr/local/bin/download-uploads   \
-  /usr/local/bin/import-db          \
-  /usr/local/bin/backup             \
-  /usr/local/bin/restore            \
-  /usr/local/bin/restore-dir        \
+  /usr/local/bin/get-credentials     \
+  /usr/local/bin/download-db         \
+  /usr/local/bin/download-directory  \
+  /usr/local/bin/download-plugins    \
+  /usr/local/bin/download-uploads    \
+  /usr/local/bin/import-db           \
+  /usr/local/bin/backup              \
+  /usr/local/bin/restore             \
+  /usr/local/bin/restore-dir         \
   /usr/local/bin/lftp-workaround     \
   /usr/local/bin/multisite-import-db \
-  /usr/local/bin/multisite-init
+  /usr/local/bin/multisite-init      \
+  /usr/local/bin/wp-init
 ENTRYPOINT sh

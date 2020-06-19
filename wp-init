@@ -1,8 +1,12 @@
 #!/usr/bin/env sh
 echo Initializing WordPress Install
-wp --allow-root core install --url='localhost' --title='Local WordPress' --admin_user='test' --admin_password='test' --admin_email='admin@mangrove.local' --skip-email
+wp --allow-root core install --url='localhost' --title='Local WordPress' --admin_user='test' --admin_password='test' --admin_email='admin@localhost' --skip-email
 if [ "$?" = "0" ]; then
-	echo WordPress ready at http://localhost
+	echo WordPress initialized.
+	echo http://localhost
+	echo Admin
+	echo username: test
+	echo password: test
 else
 	printf "\nCouldn't install WordPress. Wait for the WordPress container to finish setting up and try again.\n"
 fi

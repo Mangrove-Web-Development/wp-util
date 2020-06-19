@@ -32,3 +32,4 @@ RUN chmod a+x \
   /usr/local/bin/multisite-init      \
   /usr/local/bin/wp-init
 ENTRYPOINT sh
+USER www-data

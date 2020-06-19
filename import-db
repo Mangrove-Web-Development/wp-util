@@ -1,6 +1,10 @@
 #!/usr/bin/env sh
+if $(wp core is-installed); then
+	local=`wp --allow-root option get siteurl`
+else
+	local=http://localhost
+fi
 
-local=`wp --allow-root option get siteurl`
 echo 'importing wordpress.sql database file'
 wp --allow-root db import
 remote=`wp --allow-root option get siteurl`

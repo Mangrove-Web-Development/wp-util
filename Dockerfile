@@ -1,4 +1,4 @@
-FROM wordpress:cli-php7.4
+FROM wordpress:cli-php8.1
 USER root
 RUN apk add --no-cache \
   openssh-client \

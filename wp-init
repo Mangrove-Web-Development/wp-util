@@ -1,6 +1,10 @@
 #!/usr/bin/env sh
 echo Initializing WordPress Install
-wp --allow-root core install --url='localhost' --title='Local WordPress' --admin_user='test' --admin_password='test' --admin_email='admin@localhost' --skip-email
+wp core install \
+	--url='localhost' --title='Local WordPress' \
+	--admin_user='test' \
+	--admin_password='test' \
+	--admin_email='wp@mangrove-web.com' --skip-email
 if [ "$?" = "0" ]; then
 	echo WordPress initialized.
 	echo http://localhost

@@ -11,8 +11,7 @@ if [ -z "$REMOTE" ]; then
   CONTINUE=false
 fi
 if [ -z "$LOCAL" ]; then
-  echo LOCAL not set
-  CONTINUE=false
+  LOCAL=$REMOTE
 fi
 if [ -z "$PORT" ]; then
   echo PORT not set
@@ -25,7 +24,7 @@ if [ "$CONTINUE" = true ]; then
 	export LFTP_PASSWORD=$PASSWORD
 
 	echo "| downloading $REMOTE |"
-	lftp -e "mirror -e $REMOTE $LOCAL; bye" --env-password  sftp://$USERNAME@$HOSTNAME:$PORT
+	lftp -e "mirror -e $REMOTE_PREFIX$REMOTE $LOCAL_PREFIX$LOCAL; bye" --env-password  sftp://$USERNAME@$HOSTNAME:$PORT
 	echo download complete
 else
 	Missing Parameters or SFTP credentials. Not doing anything.

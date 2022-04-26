@@ -6,20 +6,29 @@ This is part of the Mangrove local development setup.
 See the documentation for this image in the [Mangrove DevDocs].
 
 ## Download Commands
-The download commands assume the remote server is a WPEngine environment.
-These will work with any SFTP server providing an identical file structure.
 These require the [SFTP Config](#sftp-credentials) text file to be created
 before the util container is started.
 
+### Download Directory Commands
+These commands ___sync___ you local folder with the remote directory.
+Any local files that are not on the remote host will be deleted.
+
+- `download-directory REMOTE_PATH [LOCAL_PATH]`
+    - You probably don't need to use this command directly.
+    - Path arguments prepend their respective optional prefixes defined in sftp-config.
+    - `LOCAL_PATH` defaults to `REMOTE_PATH` if not specified.
 - `download-plugins`
-    - This will ___sync___ your local wp-content/plugins folder with the remote
-    plugins directory. Any local files that are not on the remote host will be
-    deleted.
+    - This will sync your local _wp-content/plugins_ folder with the remote
+    plugins directory.
 - `download-uploads`
-    - This will ___sync___ your local wp-content/uploads folder with the remote
-    directory. Any local files that are not on the remote host will be deleted.
+    - This will sync your local _wp-content/uploads_ folder with the remote
+    directory.
+
+### Download Database
 - `download-db`
-    - downloads the database SQL file to `wordpress.sql`
+    - Downloads the database SQL file to `wordpress.sql`
+    - Assumes the database file is at `/wp-content/mysql.sql` on the remote
+      server. This is where WPEngine stores the latest database backup.
 
 ## Other Commands
 These work whether or not an SFTP config file is created.
@@ -43,6 +52,8 @@ HOSTNAME=
 USERNAME=
 PASSWORD=''
 PORT=2222
+REMOTE_PREFIX='' # Optional: path to WordPress directory on remote server.
+LOCAL_PREFIX=''  # Optional: path to local WP directory. Defaults to /var/www/html.
 ```
 Note: place password in `'single quotes'` to avoid issues with special characters.
 

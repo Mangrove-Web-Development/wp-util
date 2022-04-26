@@ -8,6 +8,7 @@ COPY get-credentials /usr/local/bin/get-credentials
 COPY download-db /usr/local/bin/download-db
 COPY download-directory /usr/local/bin/download-directory
 COPY download-plugins /usr/local/bin/download-plugins
+COPY download-themes /usr/local/bin/download-themes
 COPY download-uploads /usr/local/bin/download-uploads
 COPY import-db /usr/local/bin/import-db
 COPY backup /usr/local/bin/backup
@@ -21,6 +22,7 @@ RUN chmod a+x \
   /usr/local/bin/download-db         \
   /usr/local/bin/download-directory  \
   /usr/local/bin/download-plugins    \
+  /usr/local/bin/download-themes     \
   /usr/local/bin/download-uploads    \
   /usr/local/bin/import-db           \
   /usr/local/bin/backup              \

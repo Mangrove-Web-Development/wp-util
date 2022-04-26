@@ -20,6 +20,9 @@ Any local files that are not on the remote host will be deleted.
 - `download-plugins`
     - This will sync your local _wp-content/plugins_ folder with the remote
     plugins directory.
+- `download-themes`
+    - This will sync your local _wp-content/themes_ folder with the remote
+    plugins directory.
 - `download-uploads`
     - This will sync your local _wp-content/uploads_ folder with the remote
     directory.

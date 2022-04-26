@@ -95,7 +95,7 @@ Each build should be tagged with its version number using the SemVer format.
 
 `.` is the path argument, instructing Docker to use the current working directory as the build context.
 ```sh
-docker buildx build --push --platform=linux/amd64 --tag=mangroveweb/wp-util:2.0.0 .
+docker buildx build --push --platform=linux/amd64 --tag=mangroveweb/wp-util:x.x.x .
 ```
 
 [Mangrove DevDocs]: https://www.notion.so/mangroveweb/Utilities-0dfb5033f8694cf8bca00d056c01a0ae

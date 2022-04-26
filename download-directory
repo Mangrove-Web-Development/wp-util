@@ -23,7 +23,7 @@ if [ "$CONTINUE" = true ]; then
 
 	export LFTP_PASSWORD=$PASSWORD
 
-	echo "| downloading $REMOTE |"
+	echo "| downloading $REMOTE_PREFIX$REMOTE to $LOCAL_PREFIX$LOCAL |"
 	lftp -e "mirror -e $REMOTE_PREFIX$REMOTE $LOCAL_PREFIX$LOCAL; bye" --env-password  sftp://$USERNAME@$HOSTNAME:$PORT
 	echo download complete
 else

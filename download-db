@@ -22,7 +22,6 @@ if [ -f /var/www/html/wordpress.sql ]; then
 fi
 
 if [ "$CONTINUE" = true ]; then
-  source lftp-workaround
   echo 'downloading db'
   export LFTP_PASSWORD=$PASSWORD
   lftp -e 'get /wp-content/mysql.sql -o /var/www/html/wordpress.sql; bye' --env-password  sftp://$USERNAME@$HOSTNAME:$PORT

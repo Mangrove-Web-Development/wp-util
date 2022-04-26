@@ -21,7 +21,6 @@ fi
 
 
 if [ "$CONTINUE" = true ]; then
-  source lftp-workaround
 
 	export LFTP_PASSWORD=$PASSWORD
 

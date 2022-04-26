@@ -13,7 +13,6 @@ COPY import-db /usr/local/bin/import-db
 COPY backup /usr/local/bin/backup
 COPY restore /usr/local/bin/restore
 COPY restore-dir /usr/local/bin/restore-dir
-COPY lftp-workaround /usr/local/bin/lftp-workaround
 COPY multisite-import-db /usr/local/bin/multisite-import-db
 COPY multisite-init /usr/local/bin/multisite-init
 COPY wp-init /usr/local/bin/wp-init
@@ -27,7 +26,6 @@ RUN chmod a+x \
   /usr/local/bin/backup              \
   /usr/local/bin/restore             \
   /usr/local/bin/restore-dir         \
-  /usr/local/bin/lftp-workaround     \
   /usr/local/bin/multisite-import-db \
   /usr/local/bin/multisite-init      \
   /usr/local/bin/wp-init

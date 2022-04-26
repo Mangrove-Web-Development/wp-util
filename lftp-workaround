@@ -1,9 +1,0 @@
-#!/usr/bin/env sh
-
-echo "adding $HOSTNAME to known hosts"
-# This is a workaround. lftp version 4.8.4 on Alpine 3.10.3.
-# Workaround added 27 January 2020
-# The lftp-config option sftp:auto-confirm yes should allow
-# unknown hosts, but it's not working, so we add the host here.
-mkdir -p ~/.ssh
-ssh-keyscan -p $PORT $HOSTNAME >> ~/.ssh/known_hosts

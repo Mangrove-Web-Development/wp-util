@@ -1,23 +1,23 @@
 #!/usr/bin/env sh
 
 if $(wp core is-installed); then
-	echo 'core is installed'
+	echo 'WP Core is installed.'
 	local=`wp option get siteurl`
 else
 	local=http://${LOCAL_DEV_DOMAIN-localhost}
 fi
 
-echo 'importing wordpress.sql database file'
+echo 'Importing wordpress.sql database file.'
 wp db import
 remote=`wp option get siteurl`
 
-echo "replacing $remote with $local in database"
+echo "Replacing $remote with $local in database."
 wp search-replace $remote $local
 
-echo "setting mangrove-team password to 'localpass'"
-wp user update mangrove-team --user_pass=localpass
+echo "Setting mangrove-team password to 'localpass'."
+wp user update mangrove-team --user_pass=localpass --skip-email
 
-echo 'deactivating plugins known to cause issues on local dev'
-wp plugin deactivate better-wp-security ithemes-security-pro block-bad-queries
+echo 'Deactivating plugins known to cause issues on local dev. An error is expected if these plugins are not installed.'
+wp plugin deactivate better-wp-security ithemes-security-pro block-bad-queries --quiet
 
-echo 'import complete'
+echo 'Import complete.'

@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning].
 ### Added
 - `import-db` uses $LOCAL_DEV_DOMAIN for site URL.
 - `import-db` sets local password for mangrove-team user.
+- `import-db` deactivates plugins known to cause problems for local dev.
 
 ## [1.1.0] - 2021-04-26
 ### Added

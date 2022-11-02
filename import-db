@@ -17,4 +17,7 @@ wp --allow-root search-replace $remote $local
 echo "setting mangrove-team password to 'localpass'"
 wp user update mangrove-team --user_pass=localpass
 
+echo 'deactivating plugins known to cause issues on local dev'
+wp plugin deactivate better-wp-security ithemes-security-pro block-bad-queries
+
 echo 'import complete'

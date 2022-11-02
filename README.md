@@ -87,15 +87,15 @@ This image should be built only using `linux/amd64` platform.
 On Apple Silicon, this is done using the `--platform=linux/amd64` option.
 
 ### Tags
-Each build should be tagged with its version number using the SemVer format.
-`--tag mangroveweb/wp-local:version`
+Each build should be tagged with its version number and php version used.
+`--tag mangroveweb/wp-local:version-phpverson`
 
 ### Example
 `--push` pushes the completed build to the Docker Hub.
 
 `.` is the path argument, instructing Docker to use the current working directory as the build context.
 ```sh
-docker buildx build --push --platform=linux/amd64 --tag=mangroveweb/wp-util:x.x.x .
+docker buildx build --push --platform=linux/amd64 --tag=mangroveweb/wp-util:x.x.x-phpx.x .
 ```
 
 [Mangrove DevDocs]: https://www.notion.so/mangroveweb/Utilities-0dfb5033f8694cf8bca00d056c01a0ae

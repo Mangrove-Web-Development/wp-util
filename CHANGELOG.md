@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning].
 [Semantic Versioning]: https://semver.org/spec/v2.0.0.html
 
 ## [Unreleased]
+
+## [1.2.0] - 2022-11-02
 ### Added
 - `import-db` uses $LOCAL_DEV_DOMAIN for site URL.
 - `import-db` sets local password for mangrove-team user.

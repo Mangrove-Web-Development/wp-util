@@ -7,8 +7,8 @@ echo e.g. mangrove.com
 read remotedomain
 
 echo 'importing wordpress.sql database file'
-wp --allow-root db import
+wp db import
 
 echo "replacing $remotedomain with $localdomain in database"
-wp --allow-root search-replace --all-tables $remotedomain $localdomain
+wp search-replace --all-tables $remotedomain $localdomain
 echo 'import complete'

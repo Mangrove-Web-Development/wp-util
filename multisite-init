@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 echo Initializing Multisite
-wp --allow-root core multisite-install --url='multisite.local' --subdomains --title='Local Multisite' --admin_user='test' --admin_password='test' --admin_email='admin@mangrove.local' --skip-email
+wp core multisite-install --url='multisite.local' --subdomains --title='Local Multisite' --admin_user='test' --admin_password='test' --admin_email='admin@mangrove.local' --skip-email
 if [ "$?" = "0" ]; then
 	echo Updating .htaccess file
 	OUT=/var/www/html/.htaccess

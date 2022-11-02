@@ -2,17 +2,17 @@
 
 if $(wp core is-installed); then
 	echo 'core is installed'
-	local=`wp --allow-root option get siteurl`
+	local=`wp option get siteurl`
 else
 	local=http://${LOCAL_DEV_DOMAIN-localhost}
 fi
 
 echo 'importing wordpress.sql database file'
-wp --allow-root db import
-remote=`wp --allow-root option get siteurl`
+wp db import
+remote=`wp option get siteurl`
 
 echo "replacing $remote with $local in database"
-wp --allow-root search-replace $remote $local
+wp search-replace $remote $local
 
 echo "setting mangrove-team password to 'localpass'"
 wp user update mangrove-team --user_pass=localpass

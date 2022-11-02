@@ -1,13 +1,13 @@
 #!/bin/sh
 if [ "$1" -a -d "/backups/$1" ]; then
-	SITEURL=`wp --allow-root --path='/var/www/html' option get siteurl`
+	SITEURL=`wp --path='/var/www/html' option get siteurl`
 	echo "restoring backup $1"
 	echo "importing database"
-	wp --path='/var/www/html' db --allow-root import "/backups/$1/wordpress.sql"
-	BKSITEURL=`wp --allow-root --path='/var/www/html' option get siteurl`
+	wp --path='/var/www/html' db import "/backups/$1/wordpress.sql"
+	BKSITEURL=`wp --path='/var/www/html' option get siteurl`
 	echo "performing search-replace for WordPress Address"
 	echo "$BKSITEURL $SITEURL"
-	wp --path='/var/www/html' search-replace --allow-root $BKSITEURL $SITEURL
+	wp --path='/var/www/html' search-replace $BKSITEURL $SITEURL
 	
 	restore-dir $1 wp-content/plugins
 	restore-dir $1 wp-content/themes

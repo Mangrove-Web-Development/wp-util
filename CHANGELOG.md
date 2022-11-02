@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning].
 [Semantic Versioning]: https://semver.org/spec/v2.0.0.html
 
 ## [Unreleased]
+### Added
+- `import-db` now uses $LOCAL_DEV_DOMAIN.
 
 ## [1.1.0] - 2021-04-26
 ### Added

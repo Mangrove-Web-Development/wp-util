@@ -13,4 +13,8 @@ remote=`wp --allow-root option get siteurl`
 
 echo "replacing $remote with $local in database"
 wp --allow-root search-replace $remote $local
+
+echo "setting mangrove-team password to 'localpass'"
+wp user update mangrove-team --user_pass=localpass
+
 echo 'import complete'
